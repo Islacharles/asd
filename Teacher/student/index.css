@@ -1,0 +1,426 @@
+.main-content {
+    flex-grow: 1;
+    background-color: #F5F5F5;
+    padding: 20px;
+    margin-left: 240px;
+    transition: margin-left 0.3s ease;
+}
+
+
+/* General container for the table */
+.table-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow-x: auto;
+}
+
+/* Container for the search bar and button */
+.table-container .search-bar-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Button styling */
+.table-container .search-bar-container .create-btn {
+background-color: #4A3AFF;
+color: white;
+border: none;
+padding: 8px 15px;
+border-radius: 10px;
+cursor: pointer;
+font-size: 14px;
+}
+
+/* Search bar container */
+.table-container .search-bar-container .search-bar {
+display: flex;
+align-items: center;
+background-color: #f5f5f5;
+padding: 10px; /* Padding set to 10px */
+border-radius: 20px;
+flex-grow: 1;
+}
+
+/* Search input field */
+.table-container .search-bar-container .search-bar input {
+border: none;
+background: none;
+outline: none;
+font-size: 14px;
+flex-grow: 1;
+padding: 1px 2px; /* Padding set to 1px 2px */
+}
+
+/* Placeholder styling */
+.table-container .search-bar-container .search-bar input::placeholder {
+color: #888;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+}
+
+table th {
+    background-color: #E0E0FF;
+}
+
+table tr:nth-child(even) {
+    background-color: #F9F9F9;
+}
+
+table tr:hover {
+    background-color: #F1F1F1;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #4A3AFF;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.pagination .page-number {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #E0E0FF;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.pagination .page-number.active {
+    background-color: #4A3AFF;
+    color: white;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #E0E0E0;
+    margin: 20px 0;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+    }
+
+    .header .user-info {
+        margin-right: 20px; /* Adjust if needed */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .header .user-info {
+        margin-right: 0;
+    }
+
+    .table-container {
+        padding: 10px;
+    }
+
+    .table-container .search-bar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .table-container .search-bar-container .create-btn {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .table-container .search-bar-container .search-bar {
+        width: 100%;
+    }
+
+    table th, table td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .pagination a, .pagination .page-number {
+        font-size: 14px;
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .sidebar img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .sidebar h1 {
+        font-size: 20px;
+    }
+
+    .header .user-info span {
+        font-size: 14px;
+    }
+
+    .table-container {
+        padding: 5px;
+    }
+
+    .table-container .search-bar-container .create-btn {
+        padding: 8px 16px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+
+    .pagination a, .pagination .page-number {
+        font-size: 12px;
+        margin: 0 3px;
+    }
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;  /* Hidden by default */
+    z-index: 999;
+}
+
+/* Create panel (modal) styles */
+.create-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px; /* More rounded corners */
+    width: 400px;
+    max-width: 90%;
+    max-height: 80vh; /* Ensures the modal does not exceed 80% of the viewport height */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Softer, larger shadow */
+    display: none;  /* Hidden by default */
+    z-index: 1000;
+    overflow-y: auto; /* Enables vertical scrolling */
+    animation: fadeIn 0.4s ease-out; /* Smooth fade-in animation */
+}
+
+/* Close button (×) styles */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #7c3aed; /* Icon color to match branding */
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #5a28b8; /* Hover color for close button */
+}
+
+/* Form input styles */
+form input, form select, form textarea, form button {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+    transition: border-color 0.3s ease; /* Smooth transition on focus */
+}
+
+/* Form header styling */
+form h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    color: #333;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px; /* Slightly spaced letters for style */
+}
+
+/* Button styles */
+.create-btn {
+    background-color: #7c3aed;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-bottom: 3px;
+}
+
+.create-btn:hover {
+    background-color: #5a28b8;
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Submit button styles */
+.submit-btn {
+    background-color: #7c3aed;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #5a28b8;
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+/* Hover styles for inputs */
+input:hover, select:hover, textarea:hover {
+    border-color: #7c3aed;
+}
+
+/* Focus styles for inputs */
+input:focus, select:focus, textarea:focus {
+    border-color: #7c3aed;
+    outline: none;
+}
+
+/* Custom Scrollbar Styling (Optional) */
+.create-panel::-webkit-scrollbar {
+    width: 8px;  /* Set the width of the scrollbar */
+}
+
+.create-panel::-webkit-scrollbar-thumb {
+    background-color: #7c3aed;
+    border-radius: 10px;
+}
+
+.create-panel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* Animation for Modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+    /* Overlay for loading screen */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: none; /* Hidden by default */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    /* Loader animation (a simple spinner) */
+    .loader {
+        border: 5px solid #f3f3f3; /* Light background */
+        border-top: 5px solid blue; 
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+    
+    /* Keyframes for spinning loader */
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    i {
+        cursor: pointer; /* Changes the cursor to a pointer */
+        margin: 0 5px; /* Optional: Adds spacing between icons */
+        transition: transform 0.2s; /* Optional: Adds a hover effect */
+    }
+    
+    i:hover {
+        transform: scale(1.1); /* Optional: Slightly enlarges the icon on hover */
+    }
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+        border-radius: 8px;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+    }

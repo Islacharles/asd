@@ -1,0 +1,36 @@
+ 
+ 
+
+.user-img {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    aspect-ratio: 1/1;
+    background-color: #f1f1f1;
+    margin-bottom: 6px;
+}
+
+.upload-btn {
+    width: 100%;
+}
+
+.form-group label{
+    font-weight: 800 !important;
+    color: #4e4e4e;
+}
+
+.form-group{
+    margin-bottom: 8px;
+}
+
+.main-header{
+    width: calc(100vw - 256px) !important;
+}
+
+.main-wrapper-body {
+    max-width: calc(100% - 24px) !important;
+}
+
+body{
+    overflow-x: hidden;
+}
